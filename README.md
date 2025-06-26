@@ -26,7 +26,7 @@ To use Data Explorer effectively, you should have:
 
 ## Quick Links
 
-- [Available Data Sources](sources/overview.md)
-- [Pipeline Steps](steps/overview.md)
+- [Data Sources](sources/overview.md)
+- [Steps](steps/overview.md)
 - [Setup & Deployment](setup-deployment/query-engine-setup.md)
 - [User Guide](user-guide/building-pipelines.md)
