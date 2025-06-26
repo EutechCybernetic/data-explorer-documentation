@@ -2,12 +2,6 @@
 
 The Query Engine executes data pipelines and must be configured before using Data Explorer.
 
-## Setup Options
-
-Choose one of two methods:
-1. **Docker** (Recommended)
-2. **Build from Code**
-
 ## Environment Variables
 
 | Variable | Description | Required | Example |
@@ -31,32 +25,6 @@ docker run -d -p 21000:21000 --restart always \
   iviva.azurecr.io/services/lucy-query-engine:v1
 ```
 
-## Build from Code
-
-1. Clone repository:
-```bash
-git clone http://source.iviva.com/lucy-connectors/lucy-query-engine.git
-cd lucy-query-engine
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set environment variables:
-```bash
-export DB="<asp db connection string>"
-export MONGO_URI="<mongodb connection string>"
-export OPENAI_API_KEY="<openai api key>"
-export ANTHROPIC_API_KEY="<anthropic api key>"
-```
-
-4. Run application:
-```bash
-npm run watch
-```
-
 ## Iviva Configuration
 
 Add Query Engine to Iviva configuration:
@@ -65,7 +33,6 @@ Add Query Engine to Iviva configuration:
 ServiceRegistry.QueryEngine: <Query Engine URL>
 # Example: http://localhost:21000
 ```
-
 
 ## Verification
 
@@ -92,8 +59,8 @@ curl --request GET \
 
 Replace `<your-iviva-host>`, `<port>`, and `<your-api-key>` with your actual values.
 
-For curl request you should get a resopnse like below 
-```
+Expected response:
+```json
 {
   "msg": "query engine is running",
   "details": {

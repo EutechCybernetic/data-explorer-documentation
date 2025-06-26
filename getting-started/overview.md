@@ -31,6 +31,25 @@ Pipelines use transformation steps to modify data:
 - **Limit**: Restrict number of results
 - **Combine**: Merge multiple data sources
 
+## AI-Powered Features
+
+Data Explorer includes built-in AI capabilities to streamline pipeline creation:
+
+### 1. Natural Language Pipeline Creation
+Instead of manually configuring sources and steps, ask questions in natural language and AI will automatically build the pipeline. Examples:
+- "Show me all active users and their assigned locations"
+- "List assets that haven't been maintained in the last 30 days"
+
+### 2. Copilot Assistant
+Use the Copilot feature (top-left corner) to get AI assistance while building pipelines:
+- Enter natural language instructions
+- AI adds and configures the appropriate steps
+- Refine pipelines by refining your instructions. 
+
+### 3. AI Transformations
+- **Custom Transform**: Describe data transformations in plain English
+- **Custom Expand**: Convert single rows into multiple rows using natural language instructions
+
 ## Key Features
 
 - **Visual Pipeline Builder**: Point-and-click interface for creating pipelines
