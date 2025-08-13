@@ -1,16 +1,16 @@
-# Query Engine Setup
+# Setup & Configuration
 
 The Query Engine executes data pipelines and must be configured before using Data Explorer.
 
 ## Environment Variables
 
-| Variable | Description | Required | Example |
-|----------|-------------|----------|---------|
-| `DB` | ASP database connection string | Yes | `user id=sa;pwd=password;data source=localhost;initial catalog=asp` |
-| `MONGO_URI` | MongoDB connection string | Yes | `mongodb://localhost:27017` |
-| `OPENAI_API_KEY` | OpenAI API key for AI features | Yes | `sk-...` |
-| `ANTHROPIC_API_KEY` | Anthropic API key | No | `sk-ant-...` |
-| `PORT` | Query Engine port (default: 21000) | No | `80` |
+| Variable            | Description                        | Required | Example                                                             |
+| ------------------- | ---------------------------------- | -------- | ------------------------------------------------------------------- |
+| `DB`                | ASP database connection string     | Yes      | `user id=sa;pwd=password;data source=localhost;initial catalog=asp` |
+| `MONGO_URI`         | MongoDB connection string          | Yes      | `mongodb://localhost:27017`                                         |
+| `OPENAI_API_KEY`    | OpenAI API key for AI features     | Yes      | `sk-...`                                                            |
+| `ANTHROPIC_API_KEY` | Anthropic API key                  | No       | `sk-ant-...`                                                        |
+| `PORT`              | Query Engine port (default: 21000) | No       | `80`                                                                |
 
 ## Docker Setup
 
@@ -25,9 +25,9 @@ docker run -d -p 21000:21000 --restart always \
   iviva.azurecr.io/services/lucy-query-engine:v1
 ```
 
-## Iviva Configuration
+## iviva Configuration
 
-Add Query Engine to Iviva configuration:
+Add Query Engine to iviva configuration:
 
 ```yaml
 ServiceRegistry.QueryEngine: <Query Engine URL>
@@ -37,20 +37,25 @@ ServiceRegistry.QueryEngine: <Query Engine URL>
 ## Verification
 
 ### Check Query Engine Status
+
 Test if Query Engine is running:
+
 ```bash
 curl http://<query engine url>/status
 # Example: http://localhost:21000/status
 ```
 
-### Check Iviva Integration
+### Check iviva Integration
+
 **Option 1: Via Canvas Interface**
+
 1. Navigate to `/apps/lucy/canvas/queries`
 2. Click the plus icon
 3. If Data Explorer interface loads → Working
 4. If error message appears → Query Engine not running
 
 **Option 2: Via API**
+
 ```bash
 curl --request GET \
 --url http://<your-iviva-host>:<port>/components/QueryEngine/status \
@@ -60,6 +65,7 @@ curl --request GET \
 Replace `<your-iviva-host>`, `<port>`, and `<your-api-key>` with your actual values.
 
 Expected response:
+
 ```json
 {
   "msg": "query engine is running",
@@ -69,6 +75,6 @@ Expected response:
 }
 ```
 
-## SaaS Accounts
+## SaaS (Software as a Service) Accounts
 
 For lucyday.io or lucyhq.com accounts, Query Engine is pre-configured and ready to use.

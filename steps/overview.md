@@ -123,10 +123,10 @@ Query historical values of a given collection and field.
 
 ### History Buckets
 
-* `1min` - 1 minute intervals
-* `5min` - 5 minute intervals
-* `15min` - 15 minute intervals
-* `30min` - 30 minute intervals
+* `1min` - 1-minute intervals
+* `5min` - 5-minute intervals
+* `15min` - 15-minute intervals
+* `30min` - 30-minute intervals
 * `hour` - Hourly intervals
 * `day` - Daily intervals
 * `week` - Weekly intervals
