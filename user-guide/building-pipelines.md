@@ -1,4 +1,4 @@
-# Building Pipelines in Data Explorer
+# User Guide
 
 ## Getting Started
 
@@ -8,90 +8,116 @@ Data Explorer is accessible through multiple entry points:
 2. **Widget Data Binding** - When configuring data sources for widgets
 3. **Standalone Interface** - Custom UIs in UXP (`/apps/uxp/screen/<custom-page-id>`)
 
+
+
+***
+
 ## Initial Pipeline Creation
 
-Upon accessing Data Explorer, three options are available:
+Upon accessing Data Explorer, you have three options:
 
 ### 1. Natural Language Query
+
 Enter a natural language question about your data. AI generates a pipeline automatically based on your request.
 
 ### 2. Sample Questions
+
 Select from pre-generated sample questions based on available data sources. This creates an initial pipeline.
 
 ### 3. Manual Source Selection
+
 Choose an initial data source from the categorized list with search functionality to build from scratch.
 
-All options lead to the pipeline builder interface.
+All options lead to the **Pipeline Builder** interface.
+
+***
 
 ## Pipeline Builder Interface
 
 The interface consists of two main panels:
 
 ### Left Sidebar
+
 Contains three tabs at the bottom:
 
 **Pipeline Tab**
-- Displays initial source and list of steps
-- Provides options to add, remove, and configure steps
+
+* Displays initial source and list of steps
+* Provides options to add, remove, and configure steps
 
 **Data Sources Tab**
-- Lists all sources used in the pipeline
-- Provides options to remove or configure sources
-- Saved queries require parameter configuration
+
+* Lists all sources used in the pipeline
+* Provides options to remove or configure sources
+* Saved queries require parameter configuration
 
 **Params Tab**
-- Manage pipeline parameters
-- Provides options to add, remove, and configure parameters
 
-Selecting items from the left panel updates the right side configuration area to show details regarding the selected item and preview data up to that step based on configured parameters.
+* Manage pipeline parameters
+* Provides options to add, remove, and configure parameters
+
+Selecting items from the left panel updates the right-side configuration area to display details of the selected item and preview data up to that step based on the configured parameters.
 
 ### Right Panel
+
 Contains two sections:
-- **Configuration Area (Top)**: Step-specific settings and descriptions
-- **Preview Section (Bottom)**: Displays a preview of data based on selected item on left panel, automatically refreshing based on configuration changes
+
+* **Configuration Area (Top)**: Displays step-specific settings and descriptions
+* **Preview Section (Bottom)**: Displays a preview of data-based on the selected item in the left panel, automatically refreshing when configuration changes are made.
+
+***
 
 ## Adding and Configuring Steps
 
-1. Add steps sequentially to transform your data
-2. Configure step properties as required
-3. Preview automatically refreshes (some steps require clicking "Apply")
-4. Continue adding steps until desired output is achieved
+1. Add steps sequentially to transform your data.
+2. Configure step properties as required.
+3. The preview automatically refreshes (some steps require clicking "**Apply**").
+4. Continue adding steps until the desired output is achieved.
 
 ## Parameter Configuration
 
 Parameters enable pipeline reusability with dynamic values.
 
 ### Parameter Properties
-| Property | Description |
-|----------|-------------|
-| Name | Unique identifier for the parameter |
-| Type | Data type (text, number with rounding options, boolean) |
-| Default Value | Used when no value is provided during execution |
+
+| Property      | Description                                             |
+| ------------- | ------------------------------------------------------- |
+| Name          | Unique identifier for the parameter                     |
+| Type          | Data type (text, number with rounding options, boolean) |
+| Default Value | Used when no value is provided during execution         |
 
 ### Using Parameters
-- Parameters are available in Filter steps
-- Preview uses default values
-- Execution uses provided values or defaults to default value
+
+* Parameters are available in **Filter** steps
+* The preview uses **default values**
+* Execution uses provided values or defaults to default value
+
+***
 
 ## Saving and Using Pipelines
 
 ### Save Options by Entry Point
 
 **Standalone Interface**
-- Displays save button
-- Shows JSON pipeline definition for copying
-- Can be used in Lucy actions or custom widgets
+
+* Displays a **Save** button.
+* Shows the JSON pipeline definition for copying
+* Can be used in Lucy actions or custom widgets
 
 **Canvas Queries**
-- Provide name and description
-- Pipeline saves as a query
-- Appears in queries page listing
+
+* Provide a **name** and **description**.
+* The pipeline is saved as a query.
+* Appears in the queries page listing
 
 **Widget Designer**
-- Provide name and description
-- Optional: save pipeline for reuse
-- Returns to widget designer with pipeline bound
-- Configure widget settings and preview data
+
+* Provide a **name** and **description**.
+* Optional: save the pipeline for reuse.
+* Returns to the Widget Designer with the pipeline bound.
+* Configure widget settings and preview data.
+
+***
 
 ## Sample Pipeline Definition
 
@@ -152,9 +178,11 @@ Here's an example of a Data Explorer pipeline definition:
 ```
 
 ## Pipeline Execution Outside Canvas
+
 When executing a pipeline outside canvas through manual execution, a dictionary of parameters and values (`configuredParams`) can be passed.
 
 Based on the above example:
+
 ```json
 {
     "sources": [...],
@@ -167,7 +195,8 @@ Based on the above example:
 ```
 
 ### Microservice Execution
-Use Iviva's microservice endpoint to execute pipelines:
+
+Use iviva's microservice endpoint to execute pipelines:
 
 ```bash
 curl --request POST \
@@ -183,6 +212,7 @@ curl --request POST \
 ```
 
 ### Custom Widget Integration
+
 In custom widgets, use the `uxpContext.executeComponent` wrapper to call microservice endpoints for pipeline execution.
 
 ```tsx
@@ -202,7 +232,8 @@ uxpContext.executeComponent('QueryEngine', '/v1/execution', pipeline)
     })
 ```
 
-### Sample Response 
+### Sample Response
+
 ```json
 {
   "result": [
@@ -239,7 +270,8 @@ uxpContext.executeComponent('QueryEngine', '/v1/execution', pipeline)
 ## Parameter Usage in Widgets
 
 When using pipelines with parameters in widgets:
-- Widget prompts for parameter values
-- Use context data: filters, widget parameters, user inputs, other data sources
-- Dropdown displays available values for selection
-- Dynamic binding enables responsive data visualization
+
+* Widget prompts for parameter values
+* Use context data: filters, widget parameters, user inputs, or other data sources
+* Dropdown displays the available values for selection
+* Dynamic binding enables responsive data visualisation
