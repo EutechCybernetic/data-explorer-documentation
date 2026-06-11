@@ -11,3 +11,4 @@
 * [User Guide](user-guide/building-pipelines.md)
   * [Building Pipelines](user-guide/building-pipelines.md)
   * [Using AI Features](user-guide/ai-features.md)
+  * [Performance Improvement Guide](building-pipelines/performance-improvement-guide.md)
